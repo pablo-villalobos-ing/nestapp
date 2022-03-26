@@ -2,16 +2,16 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeor
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn('uuid')
-  idUser: string;
+  @PrimaryGeneratedColumn('increment')
+  idUser: number;
   
-  @Column({length: 255})
+  @Column({length: 100})
   nombre: string;
 
   @Column({length: 255})
   password: string;
   
-  @Column({length: 255})
+  @Column({length: 255, unique: true})
   mail: string;
   
   @Column({type: 'boolean', default: false})
