@@ -1,5 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { LoginDto } from './dto/login.dto';
 import { RegisterUserDTO } from './dto/register-user.dto';
 
 @Controller('auth')
@@ -15,7 +16,10 @@ export class AuthController {
         } else {
             return "campos no cumplen lo requerido";
         }
-        
+    }
+    @Post('/login')
+    login(@Body() login: LoginDto): Promise<{accessToken: string}>{
+        return this.authService.login(login);
     }
 
 }
