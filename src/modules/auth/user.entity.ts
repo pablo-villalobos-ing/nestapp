@@ -13,6 +13,9 @@ export class User {
   
   @Column({length: 255, unique: true})
   mail: string;
+
+  @Column({type: 'uuid', unique: true})
+  resetPasswordToken: string;
   
   @Column({type: 'boolean', default: false})
   activo: boolean;
